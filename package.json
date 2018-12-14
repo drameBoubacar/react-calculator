@@ -1,0 +1,34 @@
+{
+  "name": "react-calculator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "gulp default"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drameBoubacar/react-calculator.git"
+  },
+  "author": "Drame Boubacar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/drameBoubacar/react-calculator/issues"
+  },
+  "homepage": "https://github.com/drameBoubacar/react-calculator#readme",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "gulp": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-minify": "^3.1.0",
+    "react": "^16.6.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-es2015": "^7.0.0-beta.53",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "gulp-babel": "^8.0.0"
+  }
+}

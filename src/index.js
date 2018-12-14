@@ -1,6 +1,6 @@
-import React from 'react';
 
-export default class Reactcalc {
+
+export default class calculator {
   constructor(){
     console.log('react-calculator');
   }
