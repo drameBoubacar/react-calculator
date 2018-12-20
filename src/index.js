@@ -1,8 +1,5 @@
+import Calculator from './calculatorComponent';
+import Calcul from './Calcul';
 
-
-export default class calculator {
-  constructor(){
-    console.log('react-calculator');
-  }
-
-}
+export default Calculator;
+export {Calcul};
