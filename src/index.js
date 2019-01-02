@@ -1,5 +1,5 @@
 import Calculator from './calculatorComponent';
-import Calcul from './Calcul';
+import Calcul, {CalculetteScientifique}  from './Calcul';
 
 export default Calculator;
-export {Calcul};
+export {Calcul, CalculetteScientifique};

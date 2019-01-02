@@ -1,23 +1,24 @@
 import React,{Component} from 'react';
 import Calcul from './Calcul';
+import {CalculetteScientifique} from './Calcul';
 
-const calculette = new Calcul();
 
 export default class calculatorComponent extends Component{
-  constructor(props){
-    super(props);   
-    console.log('addition', calculette);
+constructor(props){
+  super(props);   
+    this.scientifique = new Calcul();
+    console.log('CALCUL', this.scientifique);
     this.state = {
       num1: "",
       num2: "",
       total: 0,
-      operator: ""
+      operator: "add"
     }
-  }
+}
 
-  handleChange(e){
-    this.setState({
-      operator : e.target.value
+handleChange(e){
+  this.setState({
+    operator : e.target.value
   })  
 }
 
@@ -33,27 +34,34 @@ handleChangeInputTwo(e){
   })
 }
 
+
 lanceCalculette(){
   if(this.state.operator == "add"){
-  var total =  calculette.addition(+this.state.num1, +this.state.num2);
-   this.setState({ 
-     total : this.state.total = total
-   })
+    let total =  this.calculette.addition(+this.state.num1, +this.state.num2);
+    this.setState({ 
+      total : this.state.total = total
+    })
   }
   else if(this.state.operator == "sub"){
-    var total =  calculette.soustract(+this.state.num1, +this.state.num2);
+    let total =  this.calculette.soustract(+this.state.num1, +this.state.num2);
     this.setState({ 
       total : this.state.total = total
     })
   }
   else if(this.state.operator == "mult"){
-    var total =  calculette.multiplicate(+this.state.num1, +this.state.num2);
+    let total =  this.calculette.multiplicate(+this.state.num1, +this.state.num2);
     this.setState({ 
       total : this.state.total = total
     })
   }
   else if(this.state.operator == "div"){
-    var total =  calculette.divide(+this.state.num1, +this.state.num2);
+    let total =  this.calculette.divide(+this.state.num1, +this.state.num2);
+    this.setState({ 
+      total : this.state.total = total
+    })
+  }
+  else if(this.state.operator == "modulo"){
+    let total =  this.calculette.modulo(+this.state.num1, +this.state.num2);
     this.setState({ 
       total : this.state.total = total
     })
@@ -62,14 +70,18 @@ lanceCalculette(){
 
   render(){
     return(
-      <div>
+      <div className="container">
         <input type="number" placeholder="enter a number" onChange={this.handleChangeInputOne.bind(this)}></input>
-        <select onClick={this.handleChange.bind(this)}>
-          <option></option>
+        <select onChange={this.handleChange.bind(this)} value={this.state.operator} >
           <option value="add">+</option>
           <option value="sub">-</option>
           <option value="mult">*</option>
           <option value="div">/</option>
+          <option value="modulo">%</option>
+
+          <option value="sin">sin</option>
+          <option value="log">ln</option>
+          <option value="racine">racine</option>
         </select>
         <input type="number" placeholder="enter a number" onChange={this.handleChangeInputTwo.bind(this)}></input>
         <button onClick={this.lanceCalculette.bind(this)}>calcul</button>
