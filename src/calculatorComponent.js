@@ -13,8 +13,11 @@ constructor(props){
       num2: "",
       total: 0,
       operator: "add",
-      calc : scientifique
+      calc : scientifique,
+      input : ""
     }
+    this.calcul = new Calcul();
+    this.scientifique = new CalculetteScientifique();
 }
 handleChange(e){
   this.setState({
@@ -33,7 +36,7 @@ handleChangeInputTwo(e){
 }
 lanceCalculette(){
   if(this.state.operator == "add"){
-    let total =  this.calculette.addition(+this.state.num1, +this.state.num2);
+    let total =  this.calcul.addition(+this.state.num1, +this.state.num2);
     this.setState({ 
       total : this.state.total = total
     })
@@ -58,6 +61,24 @@ lanceCalculette(){
   }
   else if(this.state.operator == "modulo"){
     let total =  this.calculette.modulo(+this.state.num1, +this.state.num2);
+    this.setState({ 
+      total : this.state.total = total
+    })
+  }
+  else if(this.state.operator == "sin"){
+    let total =  this.scientifique.sinus(+this.state.num1, +this.state.num2);
+    this.setState({ 
+      total : this.state.total = total
+    })
+  }
+  else if(this.state.operator == "log"){
+    let total =  this.scientifique.logarithme(+this.state.num1, +this.state.num2);
+    this.setState({ 
+      total : this.state.total = total
+    })
+  }
+  else if(this.state.operator == "racine"){
+    let total =  this.scientifique.racineCarre(+this.state.num1);
     this.setState({ 
       total : this.state.total = total
     })
@@ -93,7 +114,7 @@ selectCalculatorScientificque(){
             }
             {
               this.state.calc == scientifique &&       
-                <option value="log">ln</option>
+                <option value="log">log</option>
             }
             {
               this.state.calc == scientifique &&       
