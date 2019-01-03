@@ -26,6 +26,7 @@ export default class Calcul {
 class CalculetteScientifique extends Calcul {
   constructor(){
     super();
+    this.addition
   }
   sinus(a, b){
     return Math.sin(a)* b
@@ -47,7 +48,3 @@ class CalculetteScientifique extends Calcul {
 }
 
 export {CalculetteScientifique};
-
-//classe fille de calculette 
-//sinus cosinus, racine, carré, log
-// calcul moyenne d'un tableau

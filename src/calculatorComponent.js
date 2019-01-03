@@ -2,39 +2,35 @@ import React,{Component} from 'react';
 import Calcul from './Calcul';
 import {CalculetteScientifique} from './Calcul';
 
+const calcul = new Calcul();
+const scientifique = new CalculetteScientifique();
 
 export default class calculatorComponent extends Component{
 constructor(props){
   super(props);   
-    this.scientifique = new Calcul();
-    console.log('CALCUL', this.scientifique);
     this.state = {
       num1: "",
       num2: "",
       total: 0,
-      operator: "add"
+      operator: "add",
+      calc : scientifique
     }
 }
-
 handleChange(e){
   this.setState({
     operator : e.target.value
   })  
 }
-
 handleChangeInputOne(e){
   this.setState({
       num1 : e.target.value
   })
 }
-
 handleChangeInputTwo(e){
   this.setState({
     num2 : e.target.value
   })
 }
-
-
 lanceCalculette(){
   if(this.state.operator == "add"){
     let total =  this.calculette.addition(+this.state.num1, +this.state.num2);
@@ -67,21 +63,42 @@ lanceCalculette(){
     })
   }
 }
-
+selectCalculator(){
+  this.setState({
+    calc : this.state.calc = calcul
+  })
+}
+selectCalculatorScientificque(){
+  this.setState({
+    calc : this.state.calc = scientifique
+  })
+}
   render(){
     return(
       <div className="container">
+      <div>
+        <button onClick={this.selectCalculator.bind(this)}>calculatrice</button>
+        <button onClick={this.selectCalculatorScientificque.bind(this)}>calculatrice scientifique</button><br/>
+      </div>
         <input type="number" placeholder="enter a number" onChange={this.handleChangeInputOne.bind(this)}></input>
-        <select onChange={this.handleChange.bind(this)} value={this.state.operator} >
+        <select onChange={this.handleChange.bind(this)} value={this.state.operator}>
           <option value="add">+</option>
           <option value="sub">-</option>
           <option value="mult">*</option>
           <option value="div">/</option>
           <option value="modulo">%</option>
-
-          <option value="sin">sin</option>
-          <option value="log">ln</option>
-          <option value="racine">racine</option>
+            {
+              this.state.calc == scientifique &&       
+                <option value="sin">sin</option>
+            }
+            {
+              this.state.calc == scientifique &&       
+                <option value="log">ln</option>
+            }
+            {
+              this.state.calc == scientifique &&       
+                <option value="racine">racine</option>
+            }        
         </select>
         <input type="number" placeholder="enter a number" onChange={this.handleChangeInputTwo.bind(this)}></input>
         <button onClick={this.lanceCalculette.bind(this)}>calcul</button>
